@@ -1,0 +1,5 @@
+# Apache Maven
+target/
+
+# Microsoft Visual Studio Code
+.vscode/
