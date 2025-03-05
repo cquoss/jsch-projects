@@ -23,11 +23,12 @@ public class App {
     // private helper methods
 
     private void run() {
+        LOGGER.info("run start");
         final ChannelSftp channel;
         final JSch jsch = new JSch();
         final Session session;
         try {
-            session = jsch.getSession("foo", "localhost", 22);
+            session = jsch.getSession("foo", "localhost", 2222);
         } catch (final JSchException e) {
             throw new IllegalStateException("Error getting session: " + e.getMessage(), e);
         }
@@ -47,6 +48,9 @@ public class App {
             throw new IllegalStateException("Error opening channel: " + e.getMessage(), e);
         }
         LOGGER.info("run [channel={}]", channel);
+        channel.disconnect();
+        session.disconnect();
+        LOGGER.info("run end");
     }
 
 }
